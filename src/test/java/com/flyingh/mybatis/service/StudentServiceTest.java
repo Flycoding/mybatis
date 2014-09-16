@@ -32,7 +32,7 @@ public class StudentServiceTest {
 
 	@Test
 	public void testAdd() {
-		studentService.add(new Student(5, "e", "e@e.com", new Date()));
+		studentService.add(new Student("e", "e@e.com", new Date()));
 	}
 
 	@After

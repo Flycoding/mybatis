@@ -12,6 +12,13 @@ public class Student {
 		super();
 	}
 
+	public Student(String name, String email, Date dob) {
+		super();
+		this.name = name;
+		this.email = email;
+		this.dob = dob;
+	}
+
 	public Student(Integer studId, String name, String email, Date dob) {
 		super();
 		this.studId = studId;
