@@ -27,5 +27,8 @@
 		update students set
 		name=#{name},email=#{email},dob=#{dob} where stud_id=#{studId}
 	</update>
+	<delete id="delete" parameterType="int">
+		delete from students where stud_id=#{studId}
+	</delete>
 
 </mapper>

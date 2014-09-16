@@ -32,12 +32,17 @@ public class StudentServiceTest {
 
 	@Test
 	public void testAdd() {
-		studentService.add(new Student("e", "e@e.com", new Date()));
+		studentService.add(new Student(5, "e", "e@e.com", new Date()));
 	}
 
 	@Test
 	public void testUpdate() {
 		studentService.update(new Student(5, "ee", "ee@ee.com", new Date()));
+	}
+
+	@Test
+	public void testDelete() {
+		System.out.println(studentService.delete(5));
 	}
 
 	@After

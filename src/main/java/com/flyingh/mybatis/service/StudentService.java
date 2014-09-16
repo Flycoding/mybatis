@@ -34,4 +34,12 @@ public class StudentService {
 			session.commit();
 		}
 	}
+
+	public int delete(int id) {
+		try (SqlSession session = MyBatisSqlSessionFactory.openSession()) {
+			final int result = session.getMapper(StudentMapper.class).delete(id);
+			session.commit();
+			return result;
+		}
+	}
 }
