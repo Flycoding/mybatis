@@ -9,7 +9,7 @@ public interface StudentMapper {
 
 	Student findById(int id);
 
-	void insert(Student student);
+	int insert(Student student);
 
-	void update(Student student);
+	int update(Student student);
 }

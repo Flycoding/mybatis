@@ -23,14 +23,14 @@ public class StudentService {
 
 	public void add(Student student) {
 		try (SqlSession session = MyBatisSqlSessionFactory.openSession()) {
-			session.getMapper(StudentMapper.class).insert(student);
+			System.out.println(session.getMapper(StudentMapper.class).insert(student));
 			session.commit();
 		}
 	}
 
 	public void update(Student student) {
 		try (SqlSession session = MyBatisSqlSessionFactory.openSession()) {
-			session.getMapper(StudentMapper.class).update(student);
+			System.out.println(session.getMapper(StudentMapper.class).update(student));
 			session.commit();
 		}
 	}
