@@ -23,4 +23,9 @@
 		students(name,email,dob)
 		values(#{name},#{email},#{dob})
 	</insert>
+	<update id="update" parameterType="Student">
+		update students set
+		name=#{name},email=#{email},dob=#{dob} where stud_id=#{studId}
+	</update>
+
 </mapper>

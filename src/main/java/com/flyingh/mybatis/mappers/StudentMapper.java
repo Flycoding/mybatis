@@ -10,4 +10,6 @@ public interface StudentMapper {
 	Student findById(int id);
 
 	void insert(Student student);
+
+	void update(Student student);
 }

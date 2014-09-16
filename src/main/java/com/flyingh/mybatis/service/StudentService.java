@@ -27,4 +27,11 @@ public class StudentService {
 			session.commit();
 		}
 	}
+
+	public void update(Student student) {
+		try (SqlSession session = MyBatisSqlSessionFactory.openSession()) {
+			session.getMapper(StudentMapper.class).update(student);
+			session.commit();
+		}
+	}
 }

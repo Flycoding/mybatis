@@ -35,6 +35,11 @@ public class StudentServiceTest {
 		studentService.add(new Student("e", "e@e.com", new Date()));
 	}
 
+	@Test
+	public void testUpdate() {
+		studentService.update(new Student(5, "ee", "ee@ee.com", new Date()));
+	}
+
 	@After
 	public void tearDown() throws Exception {
 		studentService = null;
