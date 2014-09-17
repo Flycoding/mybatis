@@ -18,7 +18,12 @@
 
 	<resultMap type="Student" id="StudentWithAddressResult"
 		extends="StudentResult">
-		<association property="address" resultMap="AddressResult"></association>
+		<!-- <association property="address" resultMap="AddressResult"></association> -->
+		<association property="address" javaType="address">
+			<id property="addrId" column="addr_id" />
+			<result property="city" column="city" />
+			<result property="zip" column="zip" />
+		</association>
 	</resultMap>
 
 	<select id="findAllWithAddress" resultMap="StudentWithAddressResult">
