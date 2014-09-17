@@ -23,4 +23,6 @@ public interface StudentMapper {
 
 	Student findWithAddressAndBooks(int id);
 
+	List<Student> anotherFindAllWithAddressAndBooks();
+
 }

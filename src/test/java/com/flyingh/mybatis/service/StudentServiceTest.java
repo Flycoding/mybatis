@@ -67,6 +67,16 @@ public class StudentServiceTest {
 		student.getBooks().forEach(System.out::println);
 	}
 
+	@Test
+	public void testAnotherFindAllWithAddressAndBooks() {
+		studentService.anotherFindAllWithAddressAndBooks().forEach(s -> {
+			System.out.println("****************");
+			System.out.println(s);
+			System.out.println(s.getAddress());
+			System.out.println(s.getBooks());
+		});
+	}
+
 	@After
 	public void tearDown() throws Exception {
 		studentService = null;

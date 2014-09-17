@@ -36,6 +36,17 @@
 		<collection property="books" resultMap="BookResult"></collection>
 	</resultMap>
 
+	<resultMap type="student" id="AnotherStudentWithAddressAndBookResult" extends="StudentResult">
+		<association property="address" column="addr_id" select="findAddressById"></association>
+		<collection property="books" column="stud_id" select="findBooksByStudentId"></collection>
+	</resultMap>
+	<select id="findBooksByStudentId" resultMap="BookResult" parameterType="_int">
+		select * from books where stud_id=#{id}
+	</select>
+	<select id="anotherFindAllWithAddressAndBooks" resultMap="AnotherStudentWithAddressAndBookResult">
+		select * from students
+	</select>
+
 	<select id="findWithAddressAndBooks" resultMap="StudentWithAddressAndBookResult" parameterType="int">
 		select
 		s.stud_id,s.name,s.email,s.dob,s.addr_id,a.city,a.zip,b.book_id,b.book_name,b.price
