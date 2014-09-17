@@ -9,6 +9,25 @@
 		<result property="email" column="email" />
 		<result property="dob" column="dob" />
 	</resultMap>
+
+	<resultMap type="Student" id="StudentWithAddressResult">
+		<id property="studId" column="stud_id" />
+		<result property="name" column="name" />
+		<result property="email" column="email" />
+		<result property="dob" column="dob" />
+		<result property="address.addrId" column="addr_id" />
+		<result property="address.city" column="city" />
+		<result property="address.zip" column="zip" />
+	</resultMap>
+
+	<select id="findStudentWithAddress" parameterType="int"
+		resultMap="StudentWithAddressResult">
+		select stud_id,name,email,dob,s.addr_id,city,zip from
+		students s left outer join address a on s.addr_id=a.addr_id
+		where
+		stud_id=#{id}
+	</select>
+
 	<select id="findAll" resultMap="StudentResult">
 		select * from students
 	</select>
@@ -28,7 +47,8 @@
 		name=#{name},email=#{email},dob=#{dob} where stud_id=#{studId}
 	</update>
 	<delete id="delete" parameterType="int">
-		delete from students where stud_id=#{studId}
+		delete from students where
+		stud_id=#{studId}
 	</delete>
 
 </mapper>

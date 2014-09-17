@@ -7,6 +7,7 @@ public class Student {
 	private String name;
 	private String email;
 	private Date dob;
+	private Address address;
 
 	public Student() {
 		super();
@@ -59,8 +60,17 @@ public class Student {
 		this.dob = dob;
 	}
 
+	public Address getAddress() {
+		return address;
+	}
+
+	public void setAddress(Address address) {
+		this.address = address;
+	}
+
 	@Override
 	public String toString() {
-		return "Student [studId=" + studId + ", name=" + name + ", email=" + email + ", dob=" + dob + "]";
+		return "Student [studId=" + studId + ", name=" + name + ", email=" + email + ", dob=" + dob + ", address=" + address + "]";
 	}
+
 }

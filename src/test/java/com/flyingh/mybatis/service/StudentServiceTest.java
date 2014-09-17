@@ -45,6 +45,11 @@ public class StudentServiceTest {
 		System.out.println(studentService.delete(5));
 	}
 
+	@Test
+	public void testFindStudentWithAddress() {
+		System.out.println(studentService.findStudentWithAddress(10));
+	}
+
 	@After
 	public void tearDown() throws Exception {
 		studentService = null;
