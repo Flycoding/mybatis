@@ -60,4 +60,10 @@ public class StudentService {
 			return session.getMapper(StudentMapper.class).anotherFindAllWithAddress();
 		}
 	}
+
+	public Student findWithAddressAndBooks(int id) {
+		try (SqlSession session = MyBatisSqlSessionFactory.openSession()) {
+			return session.getMapper(StudentMapper.class).findWithAddressAndBooks(id);
+		}
+	}
 }

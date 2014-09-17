@@ -1,6 +1,7 @@
 package com.flyingh.mybatis.vo;
 
 import java.util.Date;
+import java.util.List;
 
 public class Student {
 	private Integer studId;
@@ -8,6 +9,7 @@ public class Student {
 	private String email;
 	private Date dob;
 	private Address address;
+	private List<Book> books;
 
 	public Student() {
 		super();
@@ -68,10 +70,18 @@ public class Student {
 		this.address = address;
 	}
 
+	public List<Book> getBooks() {
+		return books;
+	}
+
+	public void setBooks(List<Book> books) {
+		this.books = books;
+	}
+
 	@Override
 	public String toString() {
-		return "Student [studId=" + studId + ", name=" + name + ", email=" + email + ", dob=" + String.format("%tF %<tT", dob) + ", address="
-				+ address + "]";
+		return "Student [studId=" + studId + ", name=" + name + ", email=" + email + ", dob=" + dob + ", address=" + address + ", books=" + books
+				+ "]";
 	}
 
 }

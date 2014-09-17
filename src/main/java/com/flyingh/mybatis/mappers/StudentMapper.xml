@@ -16,14 +16,34 @@
 		<result property="zip" column="zip" />
 	</resultMap>
 
-	<resultMap type="Student" id="StudentWithAddressResult" extends="StudentResult">
-		<!-- <association property="address" resultMap="AddressResult"></association> -->
-		<association property="address" javaType="address">
-			<id property="addrId" column="addr_id" />
-			<result property="city" column="city" />
-			<result property="zip" column="zip" />
-		</association>
+	<resultMap type="book" id="BookResult">
+		<id property="bookId" column="book_id" />
+		<result property="name" column="book_name" />
+		<result property="price" column="price" />
 	</resultMap>
+
+	<resultMap type="Student" id="StudentWithAddressResult" extends="StudentResult">
+		<!-- <association property="address" javaType="address"> -->
+		<!-- <id property="addrId" column="addr_id" /> -->
+		<!-- <result property="city" column="city" /> -->
+		<!-- <result property="zip" column="zip" /> -->
+		<!-- </association> -->
+		<association property="address" resultMap="AddressResult"></association>
+	</resultMap>
+
+	<resultMap type="student" id="StudentWithAddressAndBookResult" extends="StudentResult">
+		<association property="address" resultMap="AddressResult"></association>
+		<collection property="books" resultMap="BookResult"></collection>
+	</resultMap>
+
+	<select id="findWithAddressAndBooks" resultMap="StudentWithAddressAndBookResult" parameterType="int">
+		select
+		s.stud_id,s.name,s.email,s.dob,s.addr_id,a.city,a.zip,b.book_id,b.book_name,b.price
+		from students s
+		left outer join address a on s.addr_id=a.addr_id
+		left outer join books b on s.stud_id=b.stud_id
+		where s.stud_id=#{id}
+	</select>
 
 	<resultMap type="student" id="AnotherStudentWithAddressResult" extends="StudentResult">
 		<association property="address" column="addr_id" select="findAddressById"></association>
