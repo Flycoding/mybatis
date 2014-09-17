@@ -19,4 +19,6 @@ public interface StudentMapper {
 
 	List<Student> findAllWithAddress();
 
+	List<Student> anotherFindAllWithAddress();
+
 }

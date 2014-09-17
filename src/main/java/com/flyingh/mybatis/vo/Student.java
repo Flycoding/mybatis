@@ -70,7 +70,8 @@ public class Student {
 
 	@Override
 	public String toString() {
-		return "Student [studId=" + studId + ", name=" + name + ", email=" + email + ", dob=" + dob + ", address=" + address + "]";
+		return "Student [studId=" + studId + ", name=" + name + ", email=" + email + ", dob=" + String.format("%tF %<tT", dob) + ", address="
+				+ address + "]";
 	}
 
 }

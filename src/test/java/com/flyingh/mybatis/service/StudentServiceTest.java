@@ -47,12 +47,17 @@ public class StudentServiceTest {
 
 	@Test
 	public void testFindStudentWithAddress() {
-		System.out.println(studentService.findStudentWithAddress(10));
+		System.out.println(studentService.findStudentWithAddress(2));
 	}
 
 	@Test
 	public void testFindAllWithAddress() {
 		studentService.findAllWithAddress().forEach(System.out::println);
+	}
+
+	@Test
+	public void testAnotherFindAllWithAddress() {
+		studentService.anotherFindAllWithAddress().forEach(System.out::println);
 	}
 
 	@After

@@ -16,8 +16,7 @@
 		<result property="zip" column="zip" />
 	</resultMap>
 
-	<resultMap type="Student" id="StudentWithAddressResult"
-		extends="StudentResult">
+	<resultMap type="Student" id="StudentWithAddressResult" extends="StudentResult">
 		<!-- <association property="address" resultMap="AddressResult"></association> -->
 		<association property="address" javaType="address">
 			<id property="addrId" column="addr_id" />
@@ -26,15 +25,26 @@
 		</association>
 	</resultMap>
 
+	<resultMap type="student" id="AnotherStudentWithAddressResult" extends="StudentResult">
+		<association property="address" column="addr_id" select="findAddressById"></association>
+	</resultMap>
+	<select id="findAddressById" parameterType="int" resultMap="AddressResult">
+		select * from address where addr_id=#{id}
+	</select>
+
+	<select id="anotherFindAllWithAddress" resultMap="AnotherStudentWithAddressResult">
+		select * from students
+	</select>
+
 	<select id="findAllWithAddress" resultMap="StudentWithAddressResult">
 		select s.*,a.* from
 		students s,address a where s.addr_id=a.addr_id
 	</select>
 
-	<select id="findStudentWithAddress" parameterType="int"
-		resultMap="StudentWithAddressResult">
+	<select id="findStudentWithAddress" parameterType="int" resultMap="StudentWithAddressResult">
 		select stud_id,name,email,dob,s.addr_id,city,zip from
-		students s left outer join address a on s.addr_id=a.addr_id
+		students s left outer
+		join address a on s.addr_id=a.addr_id
 		where
 		stud_id=#{id}
 	</select>
@@ -47,8 +57,7 @@
 		stud_id as
 		studId,name,email,dob from students where stud_id=#{id}
 	</select>
-	<insert id="insert" parameterType="Student" useGeneratedKeys="true"
-		keyProperty="studId">
+	<insert id="insert" parameterType="Student" useGeneratedKeys="true" keyProperty="studId">
 		insert into
 		students(name,email,dob)
 		values(#{name},#{email},#{dob})
