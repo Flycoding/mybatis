@@ -48,4 +48,10 @@ public class StudentService {
 			return session.getMapper(StudentMapper.class).findStudentWithAddress(id);
 		}
 	}
+
+	public List<Student> findAllWithAddress() {
+		try (SqlSession session = MyBatisSqlSessionFactory.openSession()) {
+			return session.getMapper(StudentMapper.class).findAllWithAddress();
+		}
+	}
 }

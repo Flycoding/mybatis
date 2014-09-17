@@ -17,6 +17,11 @@
 		<result property="address.zip" column="zip" />
 	</resultMap>
 
+	<select id="findAllWithAddress" resultMap="StudentWithAddressResult">
+		select s.*,a.* from
+		students s,address a where s.addr_id=a.addr_id
+	</select>
+
 	<select id="findStudentWithAddress" parameterType="int"
 		resultMap="StudentWithAddressResult">
 		select stud_id,name,email,dob,s.addr_id,city,zip from

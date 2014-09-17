@@ -50,6 +50,11 @@ public class StudentServiceTest {
 		System.out.println(studentService.findStudentWithAddress(10));
 	}
 
+	@Test
+	public void testFindAllWithAddress() {
+		studentService.findAllWithAddress().forEach(System.out::println);
+	}
+
 	@After
 	public void tearDown() throws Exception {
 		studentService = null;
